@@ -1,0 +1,6 @@
+#!/bin/bash
+# To make the debian package
+cargo build
+cp target/debug/phaktionz phaktionz/usr/bin/
+dpkg-deb --build phaktionz
+
