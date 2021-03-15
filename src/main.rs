@@ -11,8 +11,9 @@ use profiles::*;
 struct Cli {
     #[structopt(subcommand)]
     cmd: Cmd,
+   // flag: Option<Flag>
 }
-
+// Subcommands Begin
 #[derive(StructOpt)]
 enum Cmd {
     #[structopt(
@@ -32,6 +33,24 @@ struct Rules {
 struct Profile {
     name: String,
 }
+// Subcommands End
+
+/* Flags Begin
+#[derive(StructOpt)]
+enum Flag{
+    #[structopt(short = "l")]
+    List(List),
+}
+
+#[derive(StructOpt)]
+struct List{
+    list: bool
+}
+//Flags End */
+
+
+
+
 
 fn main() {
     // Rules Types Begin
@@ -80,7 +99,7 @@ fn main() {
         rules(option, summons, invocations);
     }
     if cmd == "profiles" {
-        prof();
+        //prof(option);
     }
     //CLI Command Ends
 }

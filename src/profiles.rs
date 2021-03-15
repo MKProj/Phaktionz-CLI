@@ -1,5 +1,6 @@
 pub struct Profile {
-    pub name: String,
+    pub f_name: String,
+    pub l_name: String,
     pub age: i64,
     pub height: String,
     pub factions: String,
@@ -7,6 +8,16 @@ pub struct Profile {
     pub description: String,
 }
 
-pub fn prof() {
+
+/*let Characters: [Profile;2] = [
+    {
+        
+    }
+];*/
+
+
+
+
+pub fn prof(option: String) {
     println!("Not available yet!!!");
 }
