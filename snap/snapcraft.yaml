@@ -17,4 +17,4 @@ parts:
     source-type: git
 apps: 
   phaktionz:
-    command: ./install
+    command: /bin/bash/install
