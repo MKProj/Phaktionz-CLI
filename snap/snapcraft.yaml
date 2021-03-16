@@ -6,15 +6,14 @@ description: |
   The Phaktionz CLI Wiki is to bring the ability of getting information 
   about Phaktionz directly on your system.
 
-grade: devel # must be 'stable' to release into candidate/stable channels
+grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
-
+apps: 
+  phaktionz:
+    command: ./install.sh
 parts:
   phaktionz:
     # See 'snapcraft plugins'
     plugin: dump
-    source: https://github.com/MKProj/Phaktionz-CLI.git
     source-type: git
-apps: 
-  phaktionz:
-    command: /bin/bash/install
+    source: https://github.com/MKProj/Phaktionz-CLI.git
