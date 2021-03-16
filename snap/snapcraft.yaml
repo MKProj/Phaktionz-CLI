@@ -17,4 +17,4 @@ parts:
     source-type: git
 apps: 
   phaktionz:
-    command: ./ts-pkg/usr/bin/ts-pkg
+    command: ./install

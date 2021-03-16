@@ -27,7 +27,7 @@ pub fn game() {
         String::from( "• When battling, a Player takes DMG equal to the difference between the Summons.\n\t– If a Summon that battles has less DMG than the opposing, no DMG is dealt.\n\t– If a Summon that battles has more DMG than the opposing, the Opponent takes the difference, and the Summon is demoted, except if it’s Tier 3+.")
     ];
     let mut i = 0;
-    while i < 5{
+    while i < 5 {
         println!("\t{}", mech[i]);
         i += 1;
     }

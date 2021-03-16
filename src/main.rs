@@ -98,8 +98,8 @@ fn main() {
     if cmd == "rules" {
         rules(option, summons, invocations);
     }
-    if cmd == "profiles" {
-        //prof(option);
+    else if cmd == "profile" {
+        prof(option);
     }
     //CLI Command Ends
 }
