@@ -85,9 +85,9 @@ pub fn prof(option: String) {
             height: String::from("6'"),
             factions: String::from("Titans"),
             decks: String::from("Titans - Hibernated Legends"),
-            description: String::from("Finn is not only the Coach to the team, but a father figure to Zane and Lulo who don’t exactly have a\n
-            father to be loved by. He is usually energetic and wild with ideas, however can get serious and depressing when reminded of the\n
-            past he lived with, and the disappointments he had caused.")
+            description: String::from("\tFinn is not only the Coach to the team, but a father figure to Zane and Lulo who don’t exactly have a\n
+        father to be loved by. He is usually energetic and wild with ideas, however can get serious and depressing when reminded of the\n
+        past he lived with, and the disappointments he had caused.")
         }
     ];
     let mut i = 0;
