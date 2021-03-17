@@ -67,35 +67,68 @@ pub fn c_pile() {
         i += 1;
     }
 }
+
+pub fn promote() {
+    let pr = String::from("
+Promote brings forth two new Tiers, 0 and 4. A Tier 0/4 Summon has a limit of 1.\n
+    Tier 0:\n
+        \tTier 0’s are Summons that are placed and have a realm invocation ability,\n
+        \tas well as having these attributes:\n
+        \t• Tier : 0\n
+        \t• DMG: 0\n
+        \t• Type: T/S\n
+        \t• Promote: Yes\n
+        \t• All Tier 0’s may not be battled, and treated as a Realm Invocation\n
+    Promote: \n
+    \tTo Promote a Tier 0, is to flip it to it’s other side where it resides\n
+    \tas Tier 4, and is placed at the Tier 3 location. To Promote, the player must\n
+    \tsatisfy a Promote condition that is described on the Card. If you control a\n
+    \tSummons on the Battlefield and choose to Promote, the Summons will be demoted.\n
+    Tier 4:\n
+    \tTier 4’s are usually a win condition card and are built to not stay on the\n
+    \tfield for long. While you control a Tier 4 you cannot have any other Summons\n
+    \ton the Battlefield. As well as that, they have the following attributes:\n
+        \t• Tier: 4\n
+        \t• DMG: 7/8\n
+        \t• Type: T/S\n
+        \t• All Tier 4’s cannot be demoted in Battle nor be demoted by any Abilities\n
+        \t• At the end of each End Phase the player takes Damage equal to it’s DMG\n
+            \t\t– Refusal to pay will result in it being exiled.
+    ");
+    println!("{}", pr);
+}
 pub fn list() {
-    let opt: [String; 5] = [
+    let opt: [String; 6] = [
         String::from("types"),
         String::from("game-mech"),
         String::from("terms"),
         String::from("c-pile"),
+        String::from("promote"),
         String::from("all"),
     ];
-    let desc: [String; 5] = [
+    let desc: [String; 6] = [
         String::from("Lists out all Summon/Invocation Types"),
         String::from("Lists out all the Game Mechanics"),
         String::from("Lists out all the key terms"),
         String::from("Describes what Creation Pile is"),
+        String::from("Describes what Promote is"),
         String::from("Does all commands above"),
     ];
     println!("Available Options for Rules: ");
     let mut i = 0;
-    while i < 5 {
+    while i < 6 {
         println!("\t{}: {}", opt[i], desc[i]);
         i += 1;
     }
 }
 
 pub fn rules(option: String, summmons: [Card; 2], invocations: [Card; 4]) {
-    let opt: [String; 6] = [
+    let opt: [String; 7] = [
         String::from("types"),
         String::from("game-mech"),
         String::from("terms"),
         String::from("c-pile"),
+        String::from("promote"),
         String::from("all"),
         String::from("list"),
     ];
@@ -107,7 +140,9 @@ pub fn rules(option: String, summmons: [Card; 2], invocations: [Card; 4]) {
         terms();
     } else if option == opt[3] {
         c_pile();
-    } else if option == opt[4] {
+    }else if option ==  opt[4] {
+        promote();
+    } else if option == opt[5] {
         types(summmons, invocations);
         println!("\n");
         game();
@@ -115,7 +150,7 @@ pub fn rules(option: String, summmons: [Card; 2], invocations: [Card; 4]) {
         terms();
         println!("\n");
         c_pile();
-    } else if option == opt[5] {
+    } else if option == opt[6] {
         list();
     }
 }
