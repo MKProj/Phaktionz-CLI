@@ -46,6 +46,23 @@ pub fn prof(option: String) {
             description: String::from("\tLulo is calm and collected, who’s rather the person who keeps the team focus. When in battle,\n
         he is fierce and competitive, he’s secretive and lots of the others don’t know about him, but he works as Finn’s assistant\n
         and lives with him. His family history is unknown, and there’s always something he knows that the others don’t know about.")
+        }, 
+        Profile{
+            fname: String::from("Percy"),
+            lname: String::from("Thomson"),
+            age: 17,
+            height: String::from("5'8\""),
+            factions: String::from("
+            1.Mythicals\n
+            2.Alchemists
+            "),
+            decks: String::from("
+            1.Mythicals - Elvish Army\n
+            2.Alchemists - Inorganics
+            "),
+            description: String::from("\tPercy is the fun, wacky sort of dull person of the group, he’s always trying to motivate the\n
+        team in the most weirdest ways, and is dedicated to the game even with his many losses. He’s high spirited and becomes\n
+        a whole package of encouragement and headaches.")
         }
     ];
     let mut i = 0;
