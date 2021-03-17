@@ -63,6 +63,31 @@ pub fn prof(option: String) {
             description: String::from("\tPercy is the fun, wacky sort of dull person of the group, he’s always trying to motivate the\n
         team in the most weirdest ways, and is dedicated to the game even with his many losses. He’s high spirited and becomes\n
         a whole package of encouragement and headaches.")
+        },
+        Profile{
+            fname: String::from("Khloe"),
+            lname: String::from("Bright"),
+            age: 18,
+            height: String::from("5'5\""),
+            factions: String::from("Kingdoms"),
+            decks: String::from("
+            1.Kingdoms - Insect Manipulation\n
+            2.Kingdoms - King’s Will\n
+            3.Kingdoms - Bright Kingdom
+            "),
+            description: String::from("\tKhloe is the “Mom” in the group, where she always makes sure the others are okay, and usually the\n
+        one to make the two opposing sides talk. She is very welcoming, and someone who made Zane comfortable in the beginning.")
+        },
+        Profile{
+            fname: String::from("Finn"),
+            lname: String::from(" "),
+            age: 46,
+            height: String::from("6'"),
+            factions: String::from("Titans"),
+            decks: String::from("Titans - Hibernated Legends"),
+            description: String::from("Finn is not only the Coach to the team, but a father figure to Zane and Lulo who don’t exactly have a\n
+            father to be loved by. He is usually energetic and wild with ideas, however can get serious and depressing when reminded of the\n
+            past he lived with, and the disappointments he had caused.")
         }
     ];
     let mut i = 0;
