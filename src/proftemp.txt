@@ -1,0 +1,9 @@
+Profile{
+            fname: String::from(""),
+            lname: String::from(""),
+            age: ,
+            height: String::from(""),
+            factions: String::from(""),
+            decks: String::from(""),
+            description: String::from("")
+        }

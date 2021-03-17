@@ -10,10 +10,11 @@ grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 apps: 
   phaktionz:
-    command: ./install.sh
+    command: bin/phaktionz
 parts:
   phaktionz:
     # See 'snapcraft plugins'
     plugin: dump
+    plugin: rust
     source-type: git
-    source: https://github.com/MKProj/Phaktionz-CLI.git
+    source: "https://github.com/MKProj/Phaktionz-CLI.git"

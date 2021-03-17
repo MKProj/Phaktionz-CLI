@@ -11,7 +11,7 @@ use profiles::*;
 struct Cli {
     #[structopt(subcommand)]
     cmd: Cmd,
-   // flag: Option<Flag>
+    // flag: Option<Flag>
 }
 // Subcommands Begin
 #[derive(StructOpt)]
@@ -20,9 +20,7 @@ enum Cmd {
         about = "Displays the various rules in Phaktionz\n\t$ phaktionz rules list # Gives  List of available options"
     )]
     Rules(Rules),
-    #[structopt(
-        about = "Displays the profile of specified Character"
-    )]
+    #[structopt(about = "Displays the profile of specified Character")]
     Profile(Profile),
 }
 #[derive(StructOpt)]
@@ -47,10 +45,6 @@ struct List{
     list: bool
 }
 //Flags End */
-
-
-
-
 
 fn main() {
     // Rules Types Begin
@@ -97,8 +91,7 @@ fn main() {
 
     if cmd == "rules" {
         rules(option, summons, invocations);
-    }
-    else if cmd == "profile" {
+    } else if cmd == "profile" {
         prof(option);
     }
     //CLI Command Ends
