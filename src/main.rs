@@ -9,9 +9,11 @@ use profiles::*;
 #[structopt(name = "Phaktionz CLI Wiki")]
 
 struct Cli {
+    #[structopt(flatten)] 
+    flag: Flag,
     #[structopt(subcommand)]
     cmd: Cmd,
-    // flag: Option<Flag>
+    
 }
 // Subcommands Begin
 #[derive(StructOpt)]
@@ -24,27 +26,27 @@ enum Cmd {
     Profile(Profile),
 }
 #[derive(StructOpt)]
+struct Flag{
+    #[structopt(short="s")]
+    save: Option<bool>,
+    #[structopt(short="l")]
+    list: Option<bool>,
+    #[structopt(short="o", parse(from_os_str))]
+    output: Option<std::path::PathBuf>,
+}
+
+#[derive(StructOpt)]
 struct Rules {
     options: String,
+
 }
 #[derive(StructOpt)]
 struct Profile {
     name: String,
+    #[structopt(short="o", parse(from_os_str))]
+    output: Option<std::path::PathBuf>,
 }
 // Subcommands End
-
-/* Flags Begin
-#[derive(StructOpt)]
-enum Flag{
-    #[structopt(short = "l")]
-    List(List),
-}
-
-#[derive(StructOpt)]
-struct List{
-    list: bool
-}
-//Flags End */
 
 fn main() {
     // Rules Types Begin
@@ -95,4 +97,5 @@ fn main() {
         prof(option);
     }
     //CLI Command Ends
+    // Flag Options
 }
