@@ -9,8 +9,6 @@ use profiles::*;
 #[structopt(name = "Phaktionz CLI Wiki")]
 
 struct Cli {
-    #[structopt(flatten)] 
-    flag: Flag,
     #[structopt(subcommand)]
     cmd: Cmd,
     
@@ -24,8 +22,10 @@ enum Cmd {
     Rules(Rules),
     #[structopt(about = "Displays the profile of specified Character")]
     Profile(Profile),
+    #[structopt(about = "Read the Story Concepts of Phaktionz")]
+    Story(Story)
 }
-#[derive(StructOpt)]
+/*#[derive(StructOpt)]
 struct Flag{
     #[structopt(short="s")]
     save: Option<bool>,
@@ -33,18 +33,21 @@ struct Flag{
     list: Option<bool>,
     #[structopt(short="o", parse(from_os_str))]
     output: Option<std::path::PathBuf>,
-}
+}*/
 
 #[derive(StructOpt)]
 struct Rules {
     options: String,
-
 }
 #[derive(StructOpt)]
 struct Profile {
     name: String,
-    #[structopt(short="o", parse(from_os_str))]
-    output: Option<std::path::PathBuf>,
+}
+#[derive(StructOpt)]
+struct Story{
+    season: i32, 
+    episode: i32, 
+    pdf_application: String
 }
 // Subcommands End
 
@@ -91,11 +94,14 @@ fn main() {
     let cmd = std::env::args().nth(1).expect("no command given");
     let option = std::env::args().nth(2).expect("no option given");
 
+
+
     if cmd == "rules" {
-        rules(option, summons, invocations);
+       rules(option, summons, invocations);
     } else if cmd == "profile" {
-        prof(option);
+       prof(option);
     }
     //CLI Command Ends
     // Flag Options
+
 }
