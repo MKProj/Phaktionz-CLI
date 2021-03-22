@@ -1,6 +1,6 @@
     Episode{
         name: String::from(""),
         season: ,
-        episode ,
+        episode: ,
         url: String::from("")
     },

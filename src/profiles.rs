@@ -46,7 +46,7 @@ pub fn prof(option: String) {
             description: String::from("\tLulo is calm and collected, who’s rather the person who keeps the team focus. When in battle,\n
         he is fierce and competitive, he’s secretive and lots of the others don’t know about him, but he works as Finn’s assistant\n
         and lives with him. His family history is unknown, and there’s always something he knows that the others don’t know about.")
-        }, 
+        },
         Profile{
             fname: String::from("Percy"),
             lname: String::from("Thomson"),

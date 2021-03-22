@@ -1,6 +1,6 @@
+use std::path::Path;
 use std::process::Command;
 use structopt::StructOpt;
-use std::path::Path;
 
 use std::io;
 mod rules;
@@ -20,14 +20,12 @@ struct Cli {
 // Subcommands Begin
 #[derive(StructOpt)]
 enum Cmd {
-    #[structopt(
-        about = "Displays the various rules in Phaktionz\n\t$ phaktionz rules list # Gives  List of available options"
-    )]
+    #[structopt(about = "Displays the various rules in Phaktionz")]
     Rules(Rules),
     #[structopt(about = "Displays the profile of specified Character")]
     Profile(Profile),
     #[structopt(about = "Read the Story Concepts of Phaktionz")]
-    Story(Story)
+    Story(Story),
 }
 /*#[derive(StructOpt)]
 struct Flag{
@@ -48,25 +46,33 @@ struct Profile {
     name: String,
 }
 #[derive(StructOpt)]
-struct Story{
-    season: i32, 
-    episode: i32, 
-    pdf_application: String
+struct Story {
+    season: i32,
+    episode: i32,
+    pdf_application: String,
 }
 // Subcommands End
 
-// Important functions Begins 
-fn save (url: String){
+// Important functions Begins
+fn save(url: String) {
     let path: bool = Path::new("~/Phaktionz-Wiki").is_dir();
-    if path == true{
-        let wget = Command::new("wget").arg(url).arg("-P").arg("~/Phaktionz-Wiki").output();
+    if path == true {
+        let wget = Command::new("wget")
+            .arg(url)
+            .arg("-P")
+            .arg("~/Phaktionz-Wiki")
+            .output();
     } else {
         let mkdir = Command::new("mkdir").arg("~/Phaktionz-Wiki").output();
-        let wget = Command::new("wget").arg(url).arg("-P").arg("~/Phaktionz-Wiki").output();
+        let wget = Command::new("wget")
+            .arg(url)
+            .arg("-P")
+            .arg("~/Phaktionz-Wiki")
+            .output();
     }
 }
 
-// Important functions Ends 
+// Important functions Ends
 
 fn main() {
     // Rules Types Begin
@@ -106,64 +112,84 @@ fn main() {
     let invocations: [Card; 4] = [regular, counter, weapon, realm];
     //Rules Types End
 
-    // Story Season Begins 
-    let mut season1 : [Episode; 1] = [
-    Episode{
+    // Story Season Begins
+    let mut season1: [Episode; 6] = [
+        Episode{
+            name: String::from("Concepts"),
+            season: 0,
+            episode: 0,
+            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/Concepts.pdf")
+        },
+        Episode {
         name: String::from("First Match"),
         season: 1,
         episode: 1,
-        url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/01/Single/01.pdf")
+        url: String::from(
+            "https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/01/Single/01.pdf",
+        ),
+    },
+    Episode{
+            name: String::from("Finn's Fan Fave Shop"),
+            season: 1,
+            episode: 2,
+            url: String::from("https://github.com/MKProj/Phaktionz/blob/main/Concepts/S1/Episodes/02/Single/02.pdf")
+        },
+        Episode{
+            name: String::from("The Gang"),
+            season: 1,
+            episode: 3,
+            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/03/Single/03.pdf")
+        },
+        Episode{
+            name: String::from("Lulo's Mystery"),
+            season: 1,
+            episode: 4,
+            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/04/Single/04.pdf")
+        },
+        Episode{
+            name: String::from("Missing"),
+            season: 1,
+            episode: 5,
+            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/05/Single/05.pdf")
         },
     ];
 
-
-
-    // Story Season Ends 
-
-
-
+    // Story Season Ends
 
     //CLI Command Begin
     let args = Cli::from_args();
     let cmd = std::env::args().nth(1).expect("no command given");
     let option = std::env::args().nth(2).expect("no option given");
 
-
-
     if cmd == "rules" {
-       rules(option, summons, invocations);
+        rules(option, summons, invocations);
     } else if cmd == "profile" {
-       prof(option);
-    }
-    else if cmd == "story"{
+        prof(option);
+    } else if cmd == "story" {
         let season = std::env::args().nth(2).expect("no season given");
         let episode = std::env::args().nth(3).expect("no episode given");
-        
 
-        let s :i32 = season.trim().parse().expect("Please type a valid number!");
-        let e :i32 = episode.trim().parse().expect("Please type a valid number!");
+        let s: i32 = season.trim().parse().expect("Please type a valid number!");
+        let e: i32 = episode.trim().parse().expect("Please type a valid number!");
         let mut i = 0;
-        while i < season1.len(){
-        let app = std::env::args().nth(4).expect("no option given");
-          if s == season1[i].season && e == season1[i].episode{
-            let url  = &season1[i].url;
-            /*
-            println!("Would you like to save?[Y/N]: ");
-            let mut s = String::new(); 
-            io::stdin().read_line(&mut s).expect("no answer given");
-            */
-            //if s == "y" || s == "Y"{
+        while i < season1.len() {
+            let app = std::env::args().nth(4).expect("no option given");
+            if s == season1[i].season && e == season1[i].episode {
+                let url = &season1[i].url;
+                /*
+                println!("Would you like to save?[Y/N]: ");
+                let mut s = String::new();
+                io::stdin().read_line(&mut s).expect("no answer given");
+                */
+                //if s == "y" || s == "Y"{
                 //save(url.to_string());
                 read(url.to_string(), app);
-            /*} else {
-                read(url.to_string(), app);
-            }*/
-          }  
-          i += 1;
+                /*} else {
+                    read(url.to_string(), app);
+                }*/
+            }
+            i += 1;
         }
-        
     }
     //CLI Command Ends
-    // Flag Options
-
 }

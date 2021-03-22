@@ -69,7 +69,8 @@ pub fn c_pile() {
 }
 
 pub fn promote() {
-    let pr = String::from("
+    let pr = String::from(
+        "
 Promote brings forth two new Tiers, 0 and 4. A Tier 0/4 Summon has a limit of 1.\n
     Tier 0:\n
         \tTier 0’s are Summons that are placed and have a realm invocation ability,\n
@@ -94,7 +95,8 @@ Promote brings forth two new Tiers, 0 and 4. A Tier 0/4 Summon has a limit of 1.
         \t• All Tier 4’s cannot be demoted in Battle nor be demoted by any Abilities\n
         \t• At the end of each End Phase the player takes Damage equal to it’s DMG\n
             \t\t– Refusal to pay will result in it being exiled.
-    ");
+    ",
+    );
     println!("{}", pr);
 }
 pub fn list() {
@@ -140,7 +142,7 @@ pub fn rules(option: String, summmons: [Card; 2], invocations: [Card; 4]) {
         terms();
     } else if option == opt[3] {
         c_pile();
-    }else if option ==  opt[4] {
+    } else if option == opt[4] {
         promote();
     } else if option == opt[5] {
         types(summmons, invocations);
