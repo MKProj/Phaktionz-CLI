@@ -101,6 +101,13 @@ fn main() {
     } else if cmd == "profile" {
        prof(option);
     }
+    else if cmd == "story"{
+        let mut season = std::env::args().nth(2).expect("no season given");
+        let mut episode = std::env::args().nth(3).expect("no episode given");
+        let app = std::env::args().nth(4).expect("no option given");
+
+        let s :i32 = season.trim().parse().expect("Please type a number!");
+    }
     //CLI Command Ends
     // Flag Options
 
