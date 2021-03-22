@@ -16,7 +16,6 @@ use story::*;
 struct Cli {
     #[structopt(subcommand)]
     cmd: Cmd,
-    
 }
 // Subcommands Begin
 #[derive(StructOpt)]
@@ -57,7 +56,15 @@ struct Story{
 // Subcommands End
 
 // Important functions Begins 
-
+fn save (url: String){
+    let path: bool = Path::new("~/Phaktionz-Wiki").is_dir();
+    if path == true{
+        let wget = Command::new("wget").arg(url).arg("-P").arg("~/Phaktionz-Wiki").output();
+    } else {
+        let mkdir = Command::new("mkdir").arg("~/Phaktionz-Wiki").output();
+        let wget = Command::new("wget").arg(url).arg("-P").arg("~/Phaktionz-Wiki").output();
+    }
+}
 
 // Important functions Ends 
 
@@ -140,13 +147,17 @@ fn main() {
         let app = std::env::args().nth(4).expect("no option given");
           if s == season1[i].season && e == season1[i].episode{
             let url  = &season1[i].url;
+            /*
             println!("Would you like to save?[Y/N]: ");
-            let mut save = String::new(); 
-            io::stdin().read_line(&mut save).expect("no answer given");
-            if save == "y" || save == "Y"{
-
-            }
-            read(url.to_string(), app);
+            let mut s = String::new(); 
+            io::stdin().read_line(&mut s).expect("no answer given");
+            */
+            //if s == "y" || s == "Y"{
+                //save(url.to_string());
+                read(url.to_string(), app);
+            /*} else {
+                read(url.to_string(), app);
+            }*/
           }  
           i += 1;
         }

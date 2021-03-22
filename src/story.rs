@@ -9,7 +9,3 @@ pub struct Episode {
 pub fn read(url: String, pdf_application: String){
     let read = Command::new(pdf_application).arg(url).output();
 }
-
-pub fn save(url: String){
-    let 
-}
