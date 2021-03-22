@@ -1,9 +1,14 @@
 use std::process::Command;
 use structopt::StructOpt;
+use std::path::Path;
+
+use std::io;
 mod rules;
 use rules::*;
 mod profiles;
 use profiles::*;
+mod story;
+use story::*;
 
 #[derive(StructOpt)]
 #[structopt(name = "Phaktionz CLI Wiki")]
@@ -51,6 +56,11 @@ struct Story{
 }
 // Subcommands End
 
+// Important functions Begins 
+
+
+// Important functions Ends 
+
 fn main() {
     // Rules Types Begin
     let striker = Card {
@@ -89,6 +99,23 @@ fn main() {
     let invocations: [Card; 4] = [regular, counter, weapon, realm];
     //Rules Types End
 
+    // Story Season Begins 
+    let mut season1 : [Episode; 1] = [
+    Episode{
+        name: String::from("First Match"),
+        season: 1,
+        episode: 1,
+        url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/01/Single/01.pdf")
+        },
+    ];
+
+
+
+    // Story Season Ends 
+
+
+
+
     //CLI Command Begin
     let args = Cli::from_args();
     let cmd = std::env::args().nth(1).expect("no command given");
@@ -102,11 +129,28 @@ fn main() {
        prof(option);
     }
     else if cmd == "story"{
-        let mut season = std::env::args().nth(2).expect("no season given");
-        let mut episode = std::env::args().nth(3).expect("no episode given");
-        let app = std::env::args().nth(4).expect("no option given");
+        let season = std::env::args().nth(2).expect("no season given");
+        let episode = std::env::args().nth(3).expect("no episode given");
+        
 
-        let s :i32 = season.trim().parse().expect("Please type a number!");
+        let s :i32 = season.trim().parse().expect("Please type a valid number!");
+        let e :i32 = episode.trim().parse().expect("Please type a valid number!");
+        let mut i = 0;
+        while i < season1.len(){
+        let app = std::env::args().nth(4).expect("no option given");
+          if s == season1[i].season && e == season1[i].episode{
+            let url  = &season1[i].url;
+            println!("Would you like to save?[Y/N]: ");
+            let mut save = String::new(); 
+            io::stdin().read_line(&mut save).expect("no answer given");
+            if save == "y" || save == "Y"{
+
+            }
+            read(url.to_string(), app);
+          }  
+          i += 1;
+        }
+        
     }
     //CLI Command Ends
     // Flag Options
