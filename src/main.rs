@@ -26,6 +26,8 @@ enum Cmd {
     Profile(Profile),
     #[structopt(about = "Read the Story Concepts of Phaktionz")]
     Story(Story),
+    #[structopt(about = "Gives info about Factions or it's Category")]
+    Info(Info),
 }
 /*#[derive(StructOpt)]
 struct Flag{
@@ -50,6 +52,10 @@ struct Story {
     season: i32,
     episode: i32,
     pdf_application: String,
+}
+#[derive(StructOpt)]
+struct Info {
+   /* faction_*/category: String,
 }
 // Subcommands End
 
@@ -190,6 +196,8 @@ fn main() {
             }
             i += 1;
         }
+    } else if cmd == "info"{
+        
     }
     //CLI Command Ends
 }

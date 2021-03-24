@@ -6,5 +6,4 @@ cargo build
 cp target/debug/phaktionz phaktionz/usr/bin/
 dpkg-deb --build phaktionz
 
-mkdir ~/MKProjects/MKProj/debian/Phaktionz/$version
-mv phaktionz.deb ~/MKProjects/MKProj/debian/Phaktionz/$version
+mv phaktionz.deb ~/MKProjects/debian/phaktionz-$version.deb
