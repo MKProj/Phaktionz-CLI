@@ -1,6 +1,6 @@
 [package]
 name = "phaktionz"
-version = "0.3.1"
+version = "0.3.3"
 authors = ["mustafif0929@gmail.com <mustafif0929@gmail.com>"]
 edition = "2018"
 
@@ -8,3 +8,4 @@ edition = "2018"
 
 [dependencies]
 structopt = "0.3.13"
+mkproj-lib = "0.1.3"

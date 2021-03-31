@@ -88,6 +88,83 @@ pub fn prof(option: String) {
             description: String::from("\tFinn is not only the Coach to the team, but a father figure to Zane and Lulo who don’t exactly have a\n
         father to be loved by. He is usually energetic and wild with ideas, however can get serious and depressing when reminded of the\n
         past he lived with, and the disappointments he had caused.")
+        },
+        Profile{
+            fname: String::from("Tesa"),
+            lname: String::from("Heinds"),
+            age: 17,
+            height: String::from("5'5\""),
+            factions: String::from("
+            1.Probers\n
+            2.Cyborgs"),
+            decks: String::from("
+            1.Probers - Clone Madness\n
+            2.Probers - Mad Experiments\n
+            3.Probers - Time Shift\n
+            4.Probers/Cyborgs - Delphic Synthesis
+        "),
+            description: String::from("\tTesa is introduced as the Phaktionz Prodigy and considered one of the best players overall.\n
+        She is first part of Team Alpha Legends, but later is brought in as an addition to Team Finn, and she likes to always help\n
+        the others, mostly if it’s Zane. She plays Probers as it suits her personality of being an intellect and is usually seen\n
+        being turns ahead of the opponent.")
+        },
+        Profile{
+            fname: String::from("Aziza"),
+            lname: String::from("Cambri"),
+            age: 20,
+            height: String::from("5'6\""),
+            factions: String::from("Kingdoms"),
+            decks: String::from("Kingdoms - Insects"),
+            description: String::from("\tAziza is a friend of Khloe’s and part of the team Wild Kingdom. She is not a main character\n
+        and only appears every so often, but when the Gang needs some help, the Wild Kingdom are usually there for their aid. Aziza also\n
+        has a soft personality, except when she’s in a battle, then she’s the complete opposite and is completely competitive.")
+        },
+        Profile{
+            fname: String::from("Svnether"),
+            lname: String::from("Panther"),
+            age: 20,
+            height: String::from("6'2\""),
+            factions: String::from("Kingdom"),
+            decks: String::from("Kingdoms - Slithering Venom"),
+            description: String::from("\tSventher is like the typical emo that is most religious to the stereotypes. Dramatic with every\n
+        word that is descended from his mouth to the ever so listening boxes of mankind. He has his hair covering his left side of his face,\n
+        and has many snake tattoos. He is the most weirdest member, and in terms of competitiveness, he wishes his opponent to be poisoned, not\n
+        clear whether if it’s metaphorical or literal.")
+        },
+        Profile{
+            fname: String::from("Tigero"),
+            lname: String::from("Serpentine"),
+            age: 20,
+            height: String::from("6'2\""),
+            factions: String::from("Kingdoms"),
+            decks: String::from("Kingdoms - Tigero Charge"),
+            description: String::from("\tTigero is one of the fast learning, smart member that others are fooled of due to his jock looks.\n
+        He can be heavily competitive with his superior intellects doing planning plays ahead of time.")
+        },
+        Profile{
+            fname: String::from("Elle"),
+            lname: String::from("L'Fant"),
+            age: 20,
+            height: String::from("5'2\""),
+            factions: String::from("Kingoms"),
+            decks: String::from("Kingdoms - Elephant Rampage"),
+            description: String::from("\tElle is the french sweetheart that is beautiful and cute to Zane’s world. Being his first crush,\n
+        and girlfriend, we really get to see a lot more of the gentle side of him from her. She is kind and can be scary in battle when\n
+        she acts innocent but turns out to have manipulated you to her favor.")
+        },
+        Profile{
+            fname: String::from("Syco"),
+            lname: String::from("Liscqunious"),
+            age: 18,
+            height: String::from("5'4\""),
+            factions: String::from("Cyborgs"),
+            decks: String::from("
+            1.Cyborgs – Overloaded Madness\n
+            2.Cyborgs – Override Minds
+        "),
+            description: String::from("\tSyco is an interesting person, sort of like a mad scientist in a small person. He plays the\n
+        Delphic faction, Cyborgs and shows his superior intellect as he thinks of strategy as a simple program. He loves using\n
+        opponent’s resources to help him out, and has a dark side that is felt but hard to analyze upon.")
         }
     ];
     let mut i = 0;
@@ -103,6 +180,9 @@ pub fn prof(option: String) {
                 characters[i].decks,
                 characters[i].description
             );
+        }
+        else if option == "list"{
+            println!("\t*{}", characters[i].fname);
         }
         i += 1;
     }

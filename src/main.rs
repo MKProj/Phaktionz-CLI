@@ -3,12 +3,13 @@ use std::process::Command;
 use structopt::StructOpt;
 
 use std::io;
-mod rules;
-use rules::*;
+use mkproj_lib::phaktionz::*;
 mod profiles;
 use profiles::*;
 mod story;
 use story::*;
+mod info;
+use info::*;
 
 #[derive(StructOpt)]
 #[structopt(name = "Phaktionz CLI Wiki")]
@@ -55,7 +56,7 @@ struct Story {
 }
 #[derive(StructOpt)]
 struct Info {
-   /* faction_*/category: String,
+    /* faction_*/ category: String,
 }
 // Subcommands End
 
@@ -119,7 +120,7 @@ fn main() {
     //Rules Types End
 
     // Story Season Begins
-    let mut season1: [Episode; 6] = [
+    let mut season1 = [
         Episode{
             name: String::from("Concepts"),
             season: 0,
@@ -158,6 +159,36 @@ fn main() {
             episode: 5,
             url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/05/Single/05.pdf")
         },
+        Episode{
+            name: String::from("Corruquatro"),
+            season: 1,
+            episode: 6,
+            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/06/Single/06.pdf")
+        },
+        Episode{
+            name: String::from("Mythical Lores"),
+            season: 1,
+            episode: 7,
+            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/07/Single/07.pdf")
+        },
+        Episode{
+            name: String::from("Shop Tournament"),
+            season: 1,
+            episode: 8,
+            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/08/Single/08.pdf")
+        },
+        Episode{
+            name: String::from("Mix and Match"),
+            season: 1,
+            episode: 11,
+            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/11/Single/11.pdf")
+        },
+        Episode{
+            name: String::from("Sleepover!"),
+            season: 1,
+            episode: 12,
+            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/12/Single/12.pdf")
+        },
     ];
 
     // Story Season Ends
@@ -193,11 +224,13 @@ fn main() {
                 /*} else {
                     read(url.to_string(), app);
                 }*/
+            } else if s == 1 && e == 0{
+                println!("| Name: {} |Season: {} | Episode: {} |", season1[i].name, season1[i].season, season1[i].episode);
             }
             i += 1;
         }
-    } else if cmd == "info"{
-        
+    } else if cmd == "info" {
+        Info(option);
     }
     //CLI Command Ends
 }

@@ -3,7 +3,7 @@
 echo "Version: "
 read version
 cargo build
-cp target/debug/phaktionz phaktionz/usr/bin/
-dpkg-deb --build phaktionz
+cp target/debug/phaktionz ../Packages/phaktionz/usr/bin/
+dpkg-deb --build ../Packages/phaktionz
 
-mv phaktionz.deb ~/MKProjects/debian/phaktionz-$version.deb
+mv ../Packages/phaktionz.deb ~/MKProjects/Packages/phaktionz-$version.deb
