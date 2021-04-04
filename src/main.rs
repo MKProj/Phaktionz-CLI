@@ -2,8 +2,8 @@ use std::path::Path;
 use std::process::Command;
 use structopt::StructOpt;
 
-use std::io;
 use mkproj_lib::phaktionz::*;
+//use std::io;
 mod profiles;
 use profiles::*;
 mod info;
@@ -54,7 +54,7 @@ struct Story {
 }
 #[derive(StructOpt)]
 struct Info {
-    /* faction_*/ category: String,
+    /* faction_*/ Category: String,
 }
 // Subcommands End
 
@@ -222,8 +222,11 @@ fn main() {
                 /*} else {
                     read(url.to_string(), app);
                 }*/
-            } else if s == 1 && e == 0{
-                println!("| Name: {} |Season: {} | Episode: {} |", season1[i].name, season1[i].season, season1[i].episode);
+            } else if s == 1 && e == 0 {
+                println!(
+                    "| Name: {} |Season: {} | Episode: {} |",
+                    season1[i].name, season1[i].season, season1[i].episode
+                );
             }
             i += 1;
         }

@@ -2,8 +2,8 @@
 # To make the debian package
 echo "Version: "
 read version
-cargo build
-cp target/debug/phaktionz ../Packages/phaktionz/usr/bin/
-dpkg-deb --build ../Packages/phaktionz
+cargo build --release
+cp target/release/phaktionz phaktionz/usr/bin/
+dpkg-deb --build phaktionz
 
-mv ../Packages/phaktionz.deb ~/MKProjects/Packages/phaktionz-$version.deb
+mv phaktionz.deb ~/MKProjects/Packages/phaktionz-$version.deb

@@ -180,8 +180,7 @@ pub fn prof(option: String) {
                 characters[i].decks,
                 characters[i].description
             );
-        }
-        else if option == "list"{
+        } else if option == "list" {
             println!("\t*{}", characters[i].fname);
         }
         i += 1;
