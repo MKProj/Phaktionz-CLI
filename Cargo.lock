@@ -73,13 +73,13 @@ checksum = "03b07a082330a35e43f63177cc01689da34fbffa0105e1246cf0311472cac73a"
 
 [[package]]
 name = "mkproj-lib"
-version = "0.1.4"
+version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4e735d2a66e72348502c34c5d1679556a8e59515962083b04df931616921fffe"
+checksum = "5831016c21854eb7f20bdf4db3ff1e7bde4d8bb46d3917ee15d510467d6f1055"
 
 [[package]]
 name = "phaktionz"
-version = "0.3.4"
+version = "0.4.0"
 dependencies = [
  "mkproj-lib",
  "structopt",
