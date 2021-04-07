@@ -1,7 +1,7 @@
 use std::path::Path;
 use std::process::Command;
 use structopt::StructOpt;
-
+use run_script::ScriptOptions;
 use mkproj_lib::phaktionz::*;
 //use std::io;
 mod profiles;
@@ -19,10 +19,6 @@ struct Cli {
 // Subcommands Begin
 #[derive(StructOpt)]
 enum Cmd {
-    #[structopt(about="Initializes installation for Phaktionz-Book")]
-    Init,
-    #[structopt(about="Serves the Phaktionz Book locally to your system")]
-    Serve,
     #[structopt(about = "Displays the various rules in Phaktionz")]
     Rules(Rules),
     #[structopt(about = "Displays the profile of specified Character")]
@@ -59,6 +55,10 @@ struct Story {
 #[derive(StructOpt)]
 struct Info {
     /* faction_*/ Category: String,
+}
+#[derive(StructOpt)]
+struct Init{
+    allow: Option<String>
 }
 // Subcommands End
 
@@ -198,11 +198,13 @@ fn main() {
     //CLI Command Begin
     let args = Cli::from_args();
     let cmd = std::env::args().nth(1).expect("no command given");
-    let option = std::env::args().nth(2).expect("no option given");
+    
 
     if cmd == "rules" {
+        let option = std::env::args().nth(2).expect("no option given");
         rules::rules(option, summons, invocations);
     } else if cmd == "profile" {
+        let option = std::env::args().nth(2).expect("no option given");
         prof(option);
     } else if cmd == "story" {
         let season = std::env::args().nth(2).expect("no season given");
@@ -235,13 +237,8 @@ fn main() {
             i += 1;
         }
     } else if cmd == "info" {
+        let option = std::env::args().nth(2).expect("no option given");
         Info(option);
     } 
-    else if cmd == "init"{
-        book::init();
-    }
-    else if cmd == "serve"{
-        book::serve();
-    }
     //CLI Command Ends
 }

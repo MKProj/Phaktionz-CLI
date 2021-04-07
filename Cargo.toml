@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 structopt = "0.3.13"
 mkproj-lib = "0.1.5"
+run_script = "0.7.0"
