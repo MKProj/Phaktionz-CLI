@@ -5,7 +5,7 @@ authors = ["mustafif0929@gmail.com <mustafif0929@gmail.com>"]
 edition = "2018"
 description = "A Command Line Version of the Phaktionz TCG Book"
 license = "MIT"
-documentation = "phaktionz.mkproj.com/book/"
+documentation = "https://phaktionz.mkproj.com/book/"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
