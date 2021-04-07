@@ -115,7 +115,7 @@ checksum = "6d436f08c7640fec47845b5e4bf59c3b34b1930f7db196b4d3d23486d1e4cc0c"
 
 [[package]]
 name = "phaktionz"
-version = "0.4.0"
+version = "0.4.1"
 dependencies = [
  "mkproj-lib",
  "run_script",
