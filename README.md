@@ -1,12 +1,19 @@
 # Phaktionz Command Line Interface 
 
-Current Stable : V0.1.0 
-Currently Version Being Worked On V1.2.0 
+If you would like to install do the following: 
+```
+$ cargo install phaktionz
+```
 
-Current Snapshot: V1.2.1
+Currently due to some issues, there is no built in command 
+to run the Phaktionz TCG book locally, however it can be done 
+with the following: 
 
-What's being worked on: 
-- Discarded plans of use on flags 
-- Instead adding saving feature on story command
-- New story command letting people read it via latex pdfs
-- Updated rules and profiles 
+```bash
+# Clone the git repository
+$ git clone https://github.com/MKProj/Phaktionz-Book.git
+# Install MDBook
+$ cargo install mdbook
+# Run serve on the Book's directory
+$ mdbook serve Phaktionz-Book
+```
