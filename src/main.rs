@@ -1,8 +1,8 @@
+use mkproj_lib::phaktionz::*;
+use run_script::ScriptOptions;
 use std::path::Path;
 use std::process::Command;
 use structopt::StructOpt;
-use run_script::ScriptOptions;
-use mkproj_lib::phaktionz::*;
 //use std::io;
 mod profiles;
 use profiles::*;
@@ -57,8 +57,8 @@ struct Info {
     /* faction_*/ Category: String,
 }
 #[derive(StructOpt)]
-struct Init{
-    allow: Option<String>
+struct Init {
+    allow: Option<String>,
 }
 // Subcommands End
 
@@ -198,7 +198,6 @@ fn main() {
     //CLI Command Begin
     let args = Cli::from_args();
     let cmd = std::env::args().nth(1).expect("no command given");
-    
 
     if cmd == "rules" {
         let option = std::env::args().nth(2).expect("no option given");
@@ -239,6 +238,6 @@ fn main() {
     } else if cmd == "info" {
         let option = std::env::args().nth(2).expect("no option given");
         Info(option);
-    } 
+    }
     //CLI Command Ends
 }
