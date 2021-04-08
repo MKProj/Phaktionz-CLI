@@ -21,9 +21,9 @@ struct Cli {
 enum Cmd {
     #[structopt(about = "Update Phaktionz CLI")]
     Update,
-    #[structopt(about="Initialize Phaktionz TCG Book")]
-    Init, 
-    #[structopt(about="Serve Phaktionz TCG Book Locally")]
+    #[structopt(about = "Initialize Phaktionz TCG Book")]
+    Init,
+    #[structopt(about = "Serve Phaktionz TCG Book Locally")]
     Serve,
     #[structopt(about = "Displays the various rules in Phaktionz")]
     Rules(Rules),
@@ -55,7 +55,6 @@ struct Info {
 }
 
 // Subcommands End
-
 
 fn main() {
     // Rules Types Begin
@@ -212,14 +211,13 @@ fn main() {
     } else if cmd == "info" {
         let option = std::env::args().nth(2).expect("no option given");
         Info(option);
-    }
-    else if cmd == "update"{
+    } else if cmd == "update" {
         update();
     }
-    //Book Commands 
-    else if cmd == "init"{
+    //Book Commands
+    else if cmd == "init" {
         book::init();
-    } else if cmd == "serve"{
+    } else if cmd == "serve" {
         book::serve();
     }
     //CLI Command Ends
