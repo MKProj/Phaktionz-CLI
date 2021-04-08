@@ -1,13 +1,14 @@
 use mkproj_lib::phaktionz::*;
-use run_script::ScriptOptions;
-use std::path::Path;
 use std::process::Command;
 use structopt::StructOpt;
-//use std::io;
-mod profiles;
-use profiles::*;
-mod info;
-use info::*;
+mod inf;
+use inf::*;
+mod ep;
+use ep::*;
+mod ct;
+use ct::*;
+mod prof_char;
+use prof_char::*;
 
 #[derive(StructOpt)]
 #[structopt(name = "Phaktionz CLI Wiki")]
@@ -19,6 +20,8 @@ struct Cli {
 // Subcommands Begin
 #[derive(StructOpt)]
 enum Cmd {
+    #[structopt(about = "List options of Subcommands")]
+    List(List),
     #[structopt(about = "Update Phaktionz CLI")]
     Update,
     #[structopt(about = "Initialize Phaktionz TCG Book")]
@@ -53,131 +56,29 @@ struct Story {
 struct Info {
     /* faction_*/ Category: String,
 }
-
+#[derive(StructOpt)]
+struct List {
+    subcommand: String,
+}
 // Subcommands End
 
 fn main() {
-    // Rules Types Begin
-    let striker = rules::Card {
-        name: String::from("Striker"),
-        description: String::from("Can Battle any Opponent's Summons, but not directly"),
-    };
-
-    let tech = rules::Card {
-        name: String::from("Tech"),
-        description: String::from("Can only Battle in the same column, and directly"),
-    };
-    let summons: [rules::Card; 2] = [striker, tech];
-    /////////////////////////////////
-    let regular = rules::Card {
-        name: String::from("Regular"),
-        description: String::from("This type of invocation may only be cast on your turn"),
-    };
-    let counter = rules::Card {
-        name: String::from("Counter"),
-        description: String::from("This type of invocation may be cast on any turn"),
-    };
-
-    let weapon = rules::Card {
-        name: String::from("Weapon"),
-        description: String::from(
-            "This type of invocation attaches itself to a Summon on the Battlefield",
-        ),
-    };
-
-    let realm = rules::Card {
-        name: String::from("Realm"),
-        description: String::from(
-            "This type of invocation remains on the battlefield, with continuous abilities",
-        ),
-    };
-    let invocations: [rules::Card; 4] = [regular, counter, weapon, realm];
-    //Rules Types End
-
-    // Story Season Begins
-    let mut season1 = [
-        story::Episode{
-            name: String::from("Concepts"),
-            season: 0,
-            episode: 0,
-            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/Concepts.pdf")
-        },
-        story::Episode {
-        name: String::from("First Match"),
-        season: 1,
-        episode: 1,
-        url: String::from(
-            "https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/01/Single/01.pdf",
-        ),
-    },
-    story::Episode{
-            name: String::from("Finn's Fan Fave Shop"),
-            season: 1,
-            episode: 2,
-            url: String::from("https://github.com/MKProj/Phaktionz/blob/main/Concepts/S1/Episodes/02/Single/02.pdf")
-        },
-        story::Episode{
-            name: String::from("The Gang"),
-            season: 1,
-            episode: 3,
-            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/03/Single/03.pdf")
-        },
-        story::Episode{
-            name: String::from("Lulo's Mystery"),
-            season: 1,
-            episode: 4,
-            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/04/Single/04.pdf")
-        },
-        story::Episode{
-            name: String::from("Missing"),
-            season: 1,
-            episode: 5,
-            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/05/Single/05.pdf")
-        },
-        story::Episode{
-            name: String::from("Corruquatro"),
-            season: 1,
-            episode: 6,
-            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/06/Single/06.pdf")
-        },
-        story::Episode{
-            name: String::from("Mythical Lores"),
-            season: 1,
-            episode: 7,
-            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/07/Single/07.pdf")
-        },
-        story::Episode{
-            name: String::from("Shop Tournament"),
-            season: 1,
-            episode: 8,
-            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/08/Single/08.pdf")
-        },
-        story::Episode{
-            name: String::from("Mix and Match"),
-            season: 1,
-            episode: 11,
-            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/11/Single/11.pdf")
-        },
-        story::Episode{
-            name: String::from("Sleepover!"),
-            season: 1,
-            episode: 12,
-            url: String::from("https://github.com/MKProj/Phaktionz/raw/main/Concepts/S1/Episodes/12/Single/12.pdf")
-        },
-    ];
-
-    // Story Season Ends
-
     //CLI Command Begin
     let args = Cli::from_args();
     let cmd = std::env::args().nth(1).expect("no command given");
+    //
+    let fc = Fac_Cat(); //inf
+    let season1 = ep_all(); //ep
+    let summons = card_summon(); //ct
+    let invocations = card_invocation(); //ct
+    let prof_char = prof_char(); //prof_char
 
     if cmd == "rules" {
         let option = std::env::args().nth(2).expect("no option given");
         rules::rules(option, summons, invocations);
     } else if cmd == "profile" {
         let option = std::env::args().nth(2).expect("no option given");
-        prof(option);
+        profiles::prof(option, prof_char);
     } else if cmd == "story" {
         let season = std::env::args().nth(2).expect("no season given");
         let episode = std::env::args().nth(3).expect("no episode given");
@@ -189,17 +90,7 @@ fn main() {
             let app = std::env::args().nth(4).expect("no option given");
             if s == season1[i].season && e == season1[i].episode {
                 let url = &season1[i].url;
-                /*
-                println!("Would you like to save?[Y/N]: ");
-                let mut s = String::new();
-                io::stdin().read_line(&mut s).expect("no answer given");
-                */
-                //if s == "y" || s == "Y"{
-                //save(url.to_string());
                 story::read(url.to_string(), app);
-                /*} else {
-                    read(url.to_string(), app);
-                }*/
             } else if s == 1 && e == 0 {
                 println!(
                     "| Name: {} |Season: {} | Episode: {} |",
@@ -210,7 +101,7 @@ fn main() {
         }
     } else if cmd == "info" {
         let option = std::env::args().nth(2).expect("no option given");
-        Info(option);
+        info::Info(option, fc);
     } else if cmd == "update" {
         update();
     }
@@ -219,6 +110,24 @@ fn main() {
         book::init();
     } else if cmd == "serve" {
         book::serve();
+    }
+    //List Commands
+    else if cmd == "list" {
+        let option = std::env::args().nth(2).expect("no option given");
+        if option == "rules" {
+            rules::list();
+        } else if option == "profile" {
+            profiles::prof(String::from("list"), prof_char);
+        } else if option == "story" {
+            for i in 0..season1.len() {
+                println!(
+                    "| Name: {} |Season: {} | Episode: {} |",
+                    season1[i].name, season1[i].season, season1[i].episode
+                );
+            }
+        } else if option == "info" {
+            info::Info(String::from("list"), fc);
+        }
     }
     //CLI Command Ends
 }
