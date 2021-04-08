@@ -1,6 +1,8 @@
-# Phaktionz Command Line Interface 
+# Phaktionz Command Line Interface
 
-If you would like to install do the following: 
+If you would like to install do the following:  
+
+[**Make sure to install rust first!!!**](https://rustup.rs/)
 ```
 $ cargo install phaktionz
 ```
