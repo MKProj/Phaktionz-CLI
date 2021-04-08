@@ -1,0 +1,26 @@
+---
+name: "pre-release"
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  pre-release:
+    name: "Pre Release"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      # ...
+      - name: "Build & test"
+        run: cargo build --verbose && cargo test --verbose
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ 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 }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            target/release/phaktionz
