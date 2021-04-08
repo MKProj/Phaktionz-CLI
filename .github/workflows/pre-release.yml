@@ -18,7 +18,7 @@ jobs:
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          repo_token: "${{ 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 }}"
+          repo_token: "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"
           automatic_release_tag: "latest"
           prerelease: true
           title: "Development Build"
