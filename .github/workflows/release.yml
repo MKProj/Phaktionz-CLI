@@ -19,7 +19,7 @@ jobs:
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          repo_token: "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"
           prerelease: false
           files: |
             target/release/phaktionz
