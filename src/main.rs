@@ -19,6 +19,12 @@ struct Cli {
 // Subcommands Begin
 #[derive(StructOpt)]
 enum Cmd {
+    #[structopt(about = "Update Phaktionz CLI")]
+    Update,
+    #[structopt(about="Initialize Phaktionz TCG Book")]
+    Init, 
+    #[structopt(about="Serve Phaktionz TCG Book Locally")]
+    Serve,
     #[structopt(about = "Displays the various rules in Phaktionz")]
     Rules(Rules),
     #[structopt(about = "Displays the profile of specified Character")]
@@ -28,15 +34,6 @@ enum Cmd {
     #[structopt(about = "Gives info about Factions or it's Category")]
     Info(Info),
 }
-/*#[derive(StructOpt)]
-struct Flag{
-    #[structopt(short="s")]
-    save: Option<bool>,
-    #[structopt(short="l")]
-    list: Option<bool>,
-    #[structopt(short="o", parse(from_os_str))]
-    output: Option<std::path::PathBuf>,
-}*/
 
 #[derive(StructOpt)]
 struct Rules {
@@ -56,32 +53,9 @@ struct Story {
 struct Info {
     /* faction_*/ Category: String,
 }
-#[derive(StructOpt)]
-struct Init {
-    allow: Option<String>,
-}
+
 // Subcommands End
 
-// Important functions Begins
-fn save(url: String) {
-    let path: bool = Path::new("~/Phaktionz-Wiki").is_dir();
-    if path == true {
-        let wget = Command::new("wget")
-            .arg(url)
-            .arg("-P")
-            .arg("~/Phaktionz-Wiki")
-            .output();
-    } else {
-        let mkdir = Command::new("mkdir").arg("~/Phaktionz-Wiki").output();
-        let wget = Command::new("wget")
-            .arg(url)
-            .arg("-P")
-            .arg("~/Phaktionz-Wiki")
-            .output();
-    }
-}
-
-// Important functions Ends
 
 fn main() {
     // Rules Types Begin
@@ -238,6 +212,15 @@ fn main() {
     } else if cmd == "info" {
         let option = std::env::args().nth(2).expect("no option given");
         Info(option);
+    }
+    else if cmd == "update"{
+        update();
+    }
+    //Book Commands 
+    else if cmd == "init"{
+        book::init();
+    } else if cmd == "serve"{
+        book::serve();
     }
     //CLI Command Ends
 }

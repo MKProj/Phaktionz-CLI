@@ -109,13 +109,13 @@ dependencies = [
 
 [[package]]
 name = "mkproj-lib"
-version = "0.1.7"
+version = "0.1.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6d436f08c7640fec47845b5e4bf59c3b34b1930f7db196b4d3d23486d1e4cc0c"
+checksum = "9d505c18dd736cc532d9939d6587ac72e0db526ed2073ba37f43f367ac22e2c1"
 
 [[package]]
 name = "phaktionz"
-version = "0.4.2"
+version = "0.5.0"
 dependencies = [
  "mkproj-lib",
  "run_script",
