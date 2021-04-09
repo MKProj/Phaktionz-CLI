@@ -1,3 +1,5 @@
+![Current Version](https://img.shields.io/crates/v/phaktionz?label=Phaktionz)
+![Release](https://img.shields.io/github/v/release/MKProj/Phaktionz-CLI?include_prereleases&label=Release)
 # Phaktionz Command Line Interface
 
 If you would like to install do the following:  
