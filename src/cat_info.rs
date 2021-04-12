@@ -1,5 +1,5 @@
 use mkproj_lib::phaktionz::info::*;
-pub fn Fac_Cat() -> [Category; 3] {
+pub fn cat_info() -> [Category; 3] {
     let cat = [
     Category{ //Origins
     name: String::from("Origin"),

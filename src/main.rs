@@ -1,8 +1,12 @@
+// Phaktionz CommnadLine Interface Wiki
+// An MKProject Project
+// MIT Licence  
+// Current Version: Aristotle  [v0.5.3]
 use mkproj_lib::phaktionz::*;
-use std::process::Command;
 use structopt::StructOpt;
-mod inf;
-use inf::*;
+//Important Arrays 
+mod cat_info;
+use cat_info::*;
 mod ep;
 use ep::*;
 mod ct;
@@ -15,8 +19,9 @@ use prof_char::*;
 
 struct Cli {
     #[structopt(subcommand)]
-    cmd: Cmd,
+    _cmd: Cmd,
 }
+
 // Subcommands Begin
 #[derive(StructOpt)]
 enum Cmd {
@@ -32,6 +37,7 @@ enum Cmd {
     Rules(Rules),
     #[structopt(about = "Displays the profile of specified Character")]
     Profile(Profile),
+    #[cfg(all(unix))]
     #[structopt(about = "Read the Story Concepts of Phaktionz")]
     Story(Story),
     #[structopt(about = "Gives info about Factions or it's Category")]
@@ -40,34 +46,34 @@ enum Cmd {
 
 #[derive(StructOpt)]
 struct Rules {
-    options: String,
+    _options: String,
 }
 #[derive(StructOpt)]
 struct Profile {
-    name: String,
+    _name: String,
 }
 #[derive(StructOpt)]
 struct Story {
-    season: i32,
-    episode: i32,
-    pdf_application: String,
+    _season: i32,
+    _episode: i32,
+    _pdf_application: String,
 }
 #[derive(StructOpt)]
 struct Info {
-    /* faction_*/ Category: String,
+    _category: String,
 }
 #[derive(StructOpt)]
 struct List {
-    subcommand: String,
+    _subcommand: String,
 }
 // Subcommands End
 
 fn main() {
     //CLI Command Begin
-    let args = Cli::from_args();
+    let _args = Cli::from_args();
     let cmd = std::env::args().nth(1).expect("no command given");
     //
-    let fc = Fac_Cat(); //inf
+    let cat_info = cat_info(); // Category Info
     let season1 = ep_all(); //ep
     let summons = card_summon(); //ct
     let invocations = card_invocation(); //ct
@@ -85,8 +91,7 @@ fn main() {
 
         let s: i32 = season.trim().parse().expect("Please type a valid number!");
         let e: i32 = episode.trim().parse().expect("Please type a valid number!");
-        let mut i = 0;
-        while i < season1.len() {
+        for i in 0..season1.len() {
             let app = std::env::args().nth(4).expect("no option given");
             if s == season1[i].season && e == season1[i].episode {
                 let url = &season1[i].url;
@@ -97,11 +102,10 @@ fn main() {
                     season1[i].name, season1[i].season, season1[i].episode
                 );
             }
-            i += 1;
         }
     } else if cmd == "info" {
         let option = std::env::args().nth(2).expect("no option given");
-        info::Info(option, fc);
+        info::Info(option, cat_info);
     } else if cmd == "update" {
         update();
     }
@@ -126,7 +130,7 @@ fn main() {
                 );
             }
         } else if option == "info" {
-            info::Info(String::from("list"), fc);
+            info::Info(String::from("list"), cat_info);
         }
     }
     //CLI Command Ends

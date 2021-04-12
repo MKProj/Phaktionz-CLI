@@ -1,8 +1,8 @@
 use mkproj_lib::phaktionz::*;
 // Story Season Begins
-const size: usize = 11;
-pub fn ep_all() -> [story::Episode; size] {
-    let mut season1 = [
+const SIZE: usize = 11;
+pub fn ep_all() -> [story::Episode; SIZE] {
+    let season1 = [
         story::Episode{
             name: String::from("Concepts"),
             season: 0,
