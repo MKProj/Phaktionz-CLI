@@ -1,9 +1,10 @@
 // Phaktionz CommnadLine Interface Wiki
 // An MKProject Project
-// MIT Licence
-// Current Version: Aristotle  [v0.5.3]
+// MIT License
+// Current Version: Kepler's Keepers  [v1.5.0]
 use mkproj_lib::phaktionz::*;
 use structopt::StructOpt;
+use std::path;
 //Important Arrays
 mod cat_info;
 use cat_info::*;
@@ -20,11 +21,14 @@ use prof_char::*;
 struct Cli {
     #[structopt(subcommand)]
     _cmd: Cmd,
+
 }
 
 // Subcommands Begin
 #[derive(StructOpt)]
 enum Cmd {
+    #[structopt(about = "Fetches Content to Save")]
+    Fetch(Fetch),
     #[structopt(about = "List options of Subcommands")]
     List(List),
     #[structopt(about = "Update Phaktionz CLI")]
@@ -43,6 +47,14 @@ enum Cmd {
     #[structopt(about = "Gives info about Factions or it's Category")]
     Info(Info),
 }
+#[derive(StructOpt)]
+struct Fetch{
+    _sub_command: String, 
+    _format: String, 
+    #[structopt(short, parse(from_os_str))]
+    _out: Option<path::PathBuf>
+}
+
 
 #[derive(StructOpt)]
 struct Rules {
