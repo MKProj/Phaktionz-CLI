@@ -1,14 +1,6 @@
-pub struct Profile {
-    pub fname: String,
-    pub lname: String,
-    pub age: i64,
-    pub height: String,
-    pub factions: String,
-    pub decks: String,
-    pub description: String,
-}
-
-pub fn prof(option: String) {
+use mkproj_lib::phaktionz::profiles::*;
+const SIZE: usize = 11;
+pub fn prof_char() -> [Profile; SIZE] {
     let characters = [
        Profile{
             fname: String::from("Zane"),
@@ -167,22 +159,5 @@ pub fn prof(option: String) {
         opponent’s resources to help him out, and has a dark side that is felt but hard to analyze upon.")
         }
     ];
-    let mut i = 0;
-    while i < characters.len() {
-        if option == characters[i].fname {
-            println!(
-                "Name: {} {}\nAge: {}\nHeight: {}\nFaction: {}\nDecks: {}\nDescription: \n{}\n",
-                characters[i].fname,
-                characters[i].lname,
-                characters[i].age,
-                characters[i].height,
-                characters[i].factions,
-                characters[i].decks,
-                characters[i].description
-            );
-        } else if option == "list" {
-            println!("\t*{}", characters[i].fname);
-        }
-        i += 1;
-    }
+    characters
 }

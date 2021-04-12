@@ -1,6 +1,6 @@
 [package]
 name = "phaktionz"
-version = "0.4.2"
+version = "0.5.3"
 authors = ["mustafif0929@gmail.com <mustafif0929@gmail.com>"]
 edition = "2018"
 description = "A Command Line Version of the Phaktionz TCG Book"
@@ -10,5 +10,4 @@ documentation = "https://phaktionz.mkproj.com/book/"
 
 [dependencies]
 structopt = "0.3.13"
-mkproj-lib = "0.1.5"
-run_script = "0.7.0"
+mkproj-lib = "0.1.13"

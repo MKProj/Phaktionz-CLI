@@ -1,9 +1,5 @@
-pub struct Category {
-    pub name: String,
-    pub desc: String,
-}
-
-pub fn Info(name: String) {
+use mkproj_lib::phaktionz::info::*;
+pub fn cat_info() -> [Category; 3] {
     let cat = [
     Category{ //Origins
     name: String::from("Origin"),
@@ -26,14 +22,5 @@ Delphics are the corrupted, forbidden factions brought to ruin by Lyzor.
     }
 
 ];
-
-    let mut i = 0;
-    while i < cat.len() {
-        if name == cat[i].name {
-            println!("{}", cat[i].desc);
-        } else if name == "list" {
-            println!("\t*{}", cat[i].name);
-        }
-        i += 1;
-    }
+    cat
 }
