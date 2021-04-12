@@ -3,8 +3,8 @@
 // MIT License
 // Current Version: Kepler's Keepers  [v1.5.0]
 use mkproj_lib::phaktionz::*;
-use structopt::StructOpt;
 use std::path;
+use structopt::StructOpt;
 //Important Arrays
 mod cat_info;
 use cat_info::*;
@@ -21,7 +21,6 @@ use prof_char::*;
 struct Cli {
     #[structopt(subcommand)]
     _cmd: Cmd,
-
 }
 
 // Subcommands Begin
@@ -48,13 +47,12 @@ enum Cmd {
     Info(Info),
 }
 #[derive(StructOpt)]
-struct Fetch{
-    _sub_command: String, 
-    _format: String, 
+struct Fetch {
+    _sub_command: String,
+    _format: String,
     #[structopt(short, parse(from_os_str))]
-    _out: Option<path::PathBuf>
+    _out: Option<path::PathBuf>,
 }
-
 
 #[derive(StructOpt)]
 struct Rules {
