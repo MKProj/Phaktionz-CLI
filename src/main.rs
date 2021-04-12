@@ -26,8 +26,8 @@ struct Cli {
 // Subcommands Begin
 #[derive(StructOpt)]
 enum Cmd {
-    #[structopt(about = "Fetches Content to Save")]
-    Fetch(Fetch),
+    //#[structopt(about = "Fetches Content to Save")]
+    //Fetch(Fetch),
     #[structopt(about = "List options of Subcommands")]
     List(List),
     #[structopt(about = "Update Phaktionz CLI")]
