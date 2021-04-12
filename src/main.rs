@@ -1,10 +1,10 @@
 // Phaktionz CommnadLine Interface Wiki
 // An MKProject Project
-// MIT Licence  
+// MIT Licence
 // Current Version: Aristotle  [v0.5.3]
 use mkproj_lib::phaktionz::*;
 use structopt::StructOpt;
-//Important Arrays 
+//Important Arrays
 mod cat_info;
 use cat_info::*;
 mod ep;
