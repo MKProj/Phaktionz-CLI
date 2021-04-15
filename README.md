@@ -11,5 +11,12 @@ If you would like to install do the following:
 
 [**Make sure to install rust first!!!**](https://rustup.rs/)
 ```
+# Make sure to install phaktionz
 $ cargo install phaktionz
+# Next you will need to download git 
+$ sudo apt-get install git-all # Debian
+$ git --version # Mac
+# Install Markdown Book
+$ cargo install mdbook 
 ```
+Click here for [Windows-Git](https://git-scm.com/download/win)
