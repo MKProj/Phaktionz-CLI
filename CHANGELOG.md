@@ -7,3 +7,8 @@
 - New init and serve feature to run Phaktionz-Book locally
 - Cleaned up code 
 - All major functions integrated within mkproj_lib 
+
+## v1.5.* (Kepler's Keepers)
+- Fix on profiles, and episode arrays to vectors
+- Added episodes and profiles
+- Fetch feature 
