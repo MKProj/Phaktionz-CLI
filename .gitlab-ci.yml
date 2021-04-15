@@ -1,0 +1,14 @@
+stages:
+    - build 
+    - test
+
+build-code-job: 
+    stage: build 
+    script: 
+        - echo "Building Phaktionz CLI"
+        - cargo build --verbose 
+
+    stage: test
+    script: 
+        - echo "Testing Phaktionz CLI"
+        - cargo test --verbose
