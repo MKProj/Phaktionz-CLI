@@ -3,8 +3,8 @@
 // MIT License
 // Current Version: Kepler's Keepers  [v1.5.0]
 use mkproj_lib::phaktionz::*;
-use std::path;
 use structopt::StructOpt;
+use std::net::*;
 //Important Arrays
 mod cat_info;
 use cat_info::*;
@@ -23,11 +23,12 @@ struct Cli {
     _cmd: Cmd,
 }
 
+
 // Subcommands Begin
 #[derive(StructOpt)]
 enum Cmd {
-    //#[structopt(about = "Fetches Content to Save")]
-    //Fetch(Fetch),
+    #[structopt(about = "Fetches Content to Save")]
+    Fetch(Fetch),
     #[structopt(about = "List options of Subcommands")]
     List(List),
     #[structopt(about = "Update Phaktionz CLI")]
@@ -50,8 +51,6 @@ enum Cmd {
 struct Fetch {
     _sub_command: String,
     _format: String,
-    #[structopt(short, parse(from_os_str))]
-    _out: Option<path::PathBuf>,
 }
 
 #[derive(StructOpt)]
@@ -139,9 +138,26 @@ fn main() {
                     season1[i].name, season1[i].season, season1[i].episode
                 );
             }
-        } else if option == "info" {
+        } 
+        
+        else if option == "info" {
             info::Info(String::from("list"), cat_info);
         }
+        else {println!("OPTION DOESN'T EXIST")}
+        } else if cmd == "fetch" {
+            let sub_cmd = std::env::args().nth(2).expect("no option given");
+            let format = std::env::args().nth(3).expect("no option given");
+            //mkproj_lib::phaktionz::fetch(sub_cmd, format);
+            let _url: String = format!(
+                "https://github.com/MKProj/Phaktionz/raw/main/DOCS/{}.{}",
+                sub_cmd, format
+            );
+            let _wget = std::process::Command::new("wget")
+            .arg(&_url)
+            .spawn()
+            .expect("failed to execute process");
+
+        }
+        
     }
     //CLI Command Ends
-}
