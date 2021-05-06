@@ -20,3 +20,6 @@ $ git --version # Mac
 $ cargo install mdbook 
 ```
 Click here for [Windows-Git](https://git-scm.com/download/win)
+  
+
+Contribute? Check out the MKProjects Documentation at [www.mkproj.com/book.html](https://www.mkproj.com/book.html)!!!
