@@ -22,4 +22,4 @@ $ cargo install mdbook
 Click here for [Windows-Git](https://git-scm.com/download/win)
   
 
-Contribute? Check out the MKProjects Documentation at [www.mkproj.com/book.html](https://www.mkproj.com/book.html)!!!
+Contribute? Check out the MKProjects Documentation at [http://doc.mkproj.com/book/](http://doc.mkproj.com/book/)!!!
