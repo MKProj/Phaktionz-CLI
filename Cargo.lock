@@ -73,13 +73,13 @@ checksum = "9385f66bf6105b241aa65a61cb923ef20efc665cb9f9bb50ac2f0c4b7f378d41"
 
 [[package]]
 name = "mkproj-lib"
-version = "0.1.13"
+version = "0.2.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5a329daa8b94e2a149d09fd238fc9263bc0bb7a370418af4d7dee00911c3f2d0"
+checksum = "9a4b3490cbd2bba50baed57589b5aba30132d46c0685e62c342f41f6dc34083f"
 
 [[package]]
 name = "phaktionz"
-version = "0.5.3"
+version = "1.6.0"
 dependencies = [
  "mkproj-lib",
  "structopt",
@@ -159,9 +159,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "1.0.68"
+version = "1.0.69"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3ce15dd3ed8aa2f8eeac4716d6ef5ab58b6b9256db41d7e1a0224c2788e8fd87"
+checksum = "48fe99c6bd8b1cc636890bcc071842de909d902c81ac7dab53ba33c421ab8ffb"
 dependencies = [
  "proc-macro2",
  "quote",

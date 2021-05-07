@@ -1,7 +1,6 @@
 use mkproj_lib::phaktionz::profiles::*;
-const SIZE: usize = 11;
-pub fn prof_char() -> [Profile; SIZE] {
-    let characters = [
+pub fn prof_char() -> Vec<Profile> {
+    let characters = vec![
        Profile{
             fname: String::from("Zane"),
             lname: String::from("Fulmore"),
@@ -157,6 +156,38 @@ pub fn prof_char() -> [Profile; SIZE] {
             description: String::from("\tSyco is an interesting person, sort of like a mad scientist in a small person. He plays the\n
         Delphic faction, Cyborgs and shows his superior intellect as he thinks of strategy as a simple program. He loves using\n
         opponent’s resources to help him out, and has a dark side that is felt but hard to analyze upon.")
+        },
+        Profile{
+            fname: String::from("Lyla"),
+            lname: String::from("Preston"),
+            age: 18,
+            height: String::from("5'5\""),
+            factions: String::from("
+            1.Mythicals\n
+            2.Alchemists
+        "),
+            decks: String::from("
+            1.Mythicals - Forbidden Sickness\n
+            2.Alchemists - Pana Immortals\n
+            3.Alchemists - Pana Synergy
+            "),
+            description: String::from("\tLyla is first introduced as someone who goes to Corruquatro like Zane and Lylo.\n
+        She is later revealed as Lylo's mysterious girlfriend, and the reason of his departure from Finn's team. She is the\n
+        first villian we meet, and first introduces the Delphic section of the Mythicals, Forbiddens. She is seen to manipulate\n
+        Lulo, and shares she's Finn's daughter.")
+        },
+        Profile{
+            fname: String::from("Nimu"),
+            lname: String::from("Sinthu"),
+            age: 20,
+            height: String::from("5'9\""),
+            factions: String::from("Cryptics"),
+            decks: String::from("Cryptics - Buried Past"),
+            description: String::from("\tNimu, is a member of the Corruquatro team, and is a former champion as well. His skill is\n
+        seen as he loves to bury his opponent's summons, and use them with his mummy army. He is seen to be quiet and very serious,\n
+        and someone you wouldn't typically want to be stuck in a conversation with. He's not much of a team player, and chooses to finish\n
+        a match as soon as possible so he doesn't need to interact with the opponent for long.
+        ")
         }
     ];
     characters
