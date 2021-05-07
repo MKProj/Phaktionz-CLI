@@ -1,6 +1,6 @@
 use mkproj_lib::phaktionz::info::*;
-pub fn cat_info() -> [Category; 3] {
-    let cat = [
+pub fn cat_info() -> Vec<Category> {
+    let cat = vec![
     Category{ //Origins
     name: String::from("Origin"),
     desc: String::from("\nOrigins are the founding Factions that were created by the three Origins; Helios, Prestige and King.

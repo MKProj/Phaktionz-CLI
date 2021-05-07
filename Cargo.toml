@@ -10,4 +10,4 @@ documentation = "https://phaktionz.mkproj.com/book/"
 
 [dependencies]
 structopt = "0.3.13"
-mkproj-lib = "0.2.8"
+mkproj-lib = "0.2.10"

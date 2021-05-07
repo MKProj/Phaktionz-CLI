@@ -3,13 +3,12 @@
 // MIT License
 // Current Version: Kepler's Keepers  [v1.5.0]
 use mkproj_lib::phaktionz::*;
-use std::net::*;
 use structopt::StructOpt;
 //Important Arrays
 mod cat_info;
 use cat_info::*;
-mod ep;
-use ep::*;
+//mod ep;
+//use ep::*;
 mod ct;
 use ct::*;
 mod prof_char;
@@ -40,9 +39,6 @@ enum Cmd {
     Rules(Rules),
     #[structopt(about = "Displays the profile of specified Character")]
     Profile(Profile),
-    #[cfg(all(unix))]
-    #[structopt(about = "Read the Story Concepts of Phaktionz")]
-    Story(Story),
     #[structopt(about = "Gives info about Factions or it's Category")]
     Info(Info),
 }
@@ -61,12 +57,6 @@ struct Profile {
     _name: String,
 }
 #[derive(StructOpt)]
-struct Story {
-    _season: i32,
-    _episode: i32,
-    _pdf_application: String,
-}
-#[derive(StructOpt)]
 struct Info {
     _category: String,
 }
@@ -82,7 +72,7 @@ fn main() {
     let cmd = std::env::args().nth(1).expect("no command given");
     //
     let cat_info = cat_info(); // Category Info
-    let season1 = ep_all(); //ep
+    //let season1 = ep_all(); //ep
     let summons = card_summon(); //ct
     let invocations = card_invocation(); //ct
     let prof_char = prof_char(); //prof_char
@@ -93,25 +83,7 @@ fn main() {
     } else if cmd == "profile" {
         let option = std::env::args().nth(2).expect("no option given");
         profiles::prof(option, prof_char);
-    } else if cmd == "story" {
-        let season = std::env::args().nth(2).expect("no season given");
-        let episode = std::env::args().nth(3).expect("no episode given");
-
-        let s: i32 = season.trim().parse().expect("Please type a valid number!");
-        let e: i32 = episode.trim().parse().expect("Please type a valid number!");
-        for i in 0..season1.len() {
-            let app = std::env::args().nth(4).expect("no option given");
-            if s == season1[i].season && e == season1[i].episode {
-                let url = &season1[i].url;
-                story::read(url.to_string(), app);
-            } else if s == 1 && e == 0 {
-                println!(
-                    "| Name: {} |Season: {} | Episode: {} |",
-                    season1[i].name, season1[i].season, season1[i].episode
-                );
-            }
-        }
-    } else if cmd == "info" {
+    }else if cmd == "info" {
         let option = std::env::args().nth(2).expect("no option given");
         info::Info(option, cat_info);
     } else if cmd == "update" {
@@ -130,14 +102,7 @@ fn main() {
             rules::list();
         } else if option == "profile" {
             profiles::prof(String::from("list"), prof_char);
-        } else if option == "story" {
-            for i in 0..season1.len() {
-                println!(
-                    "| Name: {} |Season: {} | Episode: {} |",
-                    season1[i].name, season1[i].season, season1[i].episode
-                );
-            }
-        } else if option == "info" {
+        }else if option == "info" {
             info::Info(String::from("list"), cat_info);
         } else {
             println!("OPTION DOESN'T EXIST")
@@ -145,15 +110,7 @@ fn main() {
     } else if cmd == "fetch" {
         let sub_cmd = std::env::args().nth(2).expect("no option given");
         let format = std::env::args().nth(3).expect("no option given");
-        //mkproj_lib::phaktionz::fetch(sub_cmd, format);
-        let _url: String = format!(
-            "https://github.com/MKProj/Phaktionz/raw/main/DOCS/{}.{}",
-            sub_cmd, format
-        );
-        let _wget = std::process::Command::new("wget")
-            .arg(&_url)
-            .spawn()
-            .expect("failed to execute process");
+        mkproj_lib::phaktionz::fetch(sub_cmd, format);
     }
 }
 //CLI Command Ends
